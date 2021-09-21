@@ -166,10 +166,21 @@ else {
 // UC 8
 // Search contacts by city
 let findByCity = contactDetailsArray.filter((e) => e._city == 'Mandya');
-console.log("Contacts by City: ");
-Display(findByCity);
+// console.log("Contacts by City: ");
+// Display(findByCity);
 
 // Search contacts by state
 let findByState = contactDetailsArray.filter((e) => e._state == 'Karnataka');
+// console.log("Contacts by State: ");
+// Display(findByState);
+
+
+// UC 9
+// View contact name by city and state
+console.log("Contacts by City: ");
+Display(contactDetailsArray.filter(contact => contact._city == "Mandya")
+  .map(contact => contact.firstName));
+
 console.log("Contacts by State: ");
-Display(findByState);
+Display(contactDetailsArray.filter(contact => contact._state == "Karnataka")
+  .map(contact => contact._firstName));
