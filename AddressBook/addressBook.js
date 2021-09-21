@@ -196,3 +196,8 @@ console.log(contactDetailsArray.filter(contact => contact.city == "Mandya")
 console.log("Count by State: ");
 console.log(contactDetailsArray.filter(contact => contact.state == "Karnataka")
   .reduce((count, contact) => contact.firstName ? ++count : count, 0));
+
+
+// UC 11
+// Sort entries alphabetically by first name
+Display(contactDetailsArray.sort((a, b) => a.firstName.localeCompare(b.firstName)));
