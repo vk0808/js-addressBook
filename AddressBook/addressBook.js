@@ -136,3 +136,15 @@ Display();
 contactDetailsArray.splice(index, 1);
 console.log("Address book after deletion");
 Display();
+
+
+// UC 6
+// Find no of contacts in array
+let totalContacts = 0;
+function getCount(contactDetailsArray) {
+  if (contactDetailsArray != null)
+    totalContacts++;
+  return totalContacts;
+}
+contactDetailsArray.reduce(getCount, 1);
+console.log("Number of contacts in AddressBook : " + totalContacts);
