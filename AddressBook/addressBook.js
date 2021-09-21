@@ -17,7 +17,7 @@ class AddressBookJs {
   // Name: first letter should be capital and min 3 letters
   get firstName() { return this._firstName; }
   set firstName(firstName) {
-    let nameRegex = RegExp("^[A-Z]{1}[A-Za-z]{2,}$");
+    let nameRegex = RegExp("^[A-Z]{1}[a-zA-Z\\s]{2,}$");
     if (nameRegex.test(firstName))
       this._firstName = firstName;
     else
@@ -27,7 +27,7 @@ class AddressBookJs {
   // Name: first letter should be capital and min 3 letters
   get lastName() { return this._lastName; }
   set lastName(lastName) {
-    let nameRegex = RegExp("^[A-Z]{1}[A-Za-z]{2,}$");
+    let nameRegex = RegExp("^[A-Z]{1}[a-zA-Z\\s]{2,}$");
     if (nameRegex.test(lastName))
       this._lastName = lastName;
     else
@@ -64,20 +64,20 @@ class AddressBookJs {
       throw "Invalid state";
   }
 
-  // Zip: pin code of form 400 088 or 400088
+  // Zip: pin code of form 400088
   get zip() { return this._zip; }
   set zip(zip) {
-    let zipRegex = RegExp("^[1-9]{3}[ ]*[0-9]{3}$");
+    let zipRegex = RegExp("^[1-9]{1}[0-9]{5}$");
     if (zipRegex.test(zip))
       this._zip = zip;
     else
       throw "Invalid zip ";
   }
 
-  // PhoneNumber: phone number should be of form 91 9650925666
+  // PhoneNumber: phone number should be of form 9650925666
   get phoneNumber() { return this._phoneNumber; }
   set phoneNumber(phoneNumber) {
-    let phoneRegex = RegExp("^[1-9]{2}[ ]{1}[0-9]{10}$");
+    let phoneRegex = RegExp("^[1-9]{1}[0-9]{9}$");
     if (phoneRegex.test(phoneNumber))
       this._phoneNumber = phoneNumber;
     else
@@ -96,8 +96,8 @@ class AddressBookJs {
 
   // method
   toString() {
-    return "First Name: " + this.firstName + ", Last Name: " + this.lastName + "\nAddress: " + this.address + ", \nCity: " + this.city
-      + ", \nState: " + this.state + " \nZip: " + this.zip + ", \nPhone Number: " + this.phoneNumber + ", \nEmail: " + this.email;
+    return "First Name: " + this.firstName + "\nLast Name: " + this.lastName + "\nAddress: " + this.address + "\nCity: " + this.city
+      + "\nState: " + this.state + "\nZip: " + this.zip + "\nPhone Number: " + this.phoneNumber + "\nEmail: " + this.email;
   }
 }
 
@@ -107,16 +107,22 @@ let contactDetailsArray = new Array();
 // Add contact details to array
 try {
   contactDetailsArray.push(new AddressBookJs("Rahul ", "Gowda", "2nd cross Ramnagar Nagar", "Mysore", "Karnataka", "580082", "8123351458", "rahul@gmail.com"));
-  contactDetailsArray.push(new AddressBookJs("Ravi ", "Kumar", "3nd cross", "Bangalore", "Karnataka", "800078", "934747358", "ravi@gmail.com"));
+  contactDetailsArray.push(new AddressBookJs("Ravi ", "Kumar", "3nd cross", "Bangalore", "Karnataka", "800078", "9347473580", "ravi@gmail.com"));
   contactDetailsArray.push(new AddressBookJs("Asha", "Kumari", "4nd cross Indira Nagar", "Bangalore", "Karnataka", "580003", "1234567896", "asha@gmail.com"));
-  contactDetailsArray.push(new AddressBookJs("Porvi", "Shetty", "2nd cross", "Mandya", "Karnataka", "560078", "0987654321", "porvi@gmail.com"));
-  contactDetailsArray.push(new AddressBookJs("Raja", "M", "2nd cross Rajaji Nagar", "Gadag", "Karnataka", "570006", "0987654321", "raja@gmail.com"));
+  contactDetailsArray.push(new AddressBookJs("Porvi", "Shetty", "2nd cross", "Mandya", "Karnataka", "560078", "9876543210", "porvi@gmail.com"));
+  contactDetailsArray.push(new AddressBookJs("Raja", "Mohan", "2nd cross Rajaji Nagar", "Gadag", "Karnataka", "570006", "9987654321", "raja@gmail.com"));
 }
 catch (e) {
   console.error(e);
 }
-Display();
 
 function Display() {
-  contactDetailsArray.forEach((contact) => console.log(contact.toString()));
+  contactDetailsArray.forEach((contact) => console.log(contact.toString() + "\n"));
 }
+
+// UC 4
+// get existing person
+let index = contactDetailsArray.findIndex(contact => contact.firstName == "Raja");
+// update
+contactDetailsArray[index].lastName = "Shekar";
+Display();
