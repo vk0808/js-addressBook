@@ -184,3 +184,15 @@ Display(contactDetailsArray.filter(contact => contact._city == "Mandya")
 console.log("Contacts by State: ");
 Display(contactDetailsArray.filter(contact => contact._state == "Karnataka")
   .map(contact => contact._firstName));
+
+
+// UC 10
+// Get contact count by city
+console.log("Count by City: ");
+console.log(contactDetailsArray.filter(contact => contact.city == "Mandya")
+  .reduce((count, contact) => contact.firstName ? ++count : count, 0));
+
+// Get contact count by state
+console.log("Count by State: ");
+console.log(contactDetailsArray.filter(contact => contact.state == "Karnataka")
+  .reduce((count, contact) => contact.firstName ? ++count : count, 0));
