@@ -148,3 +148,15 @@ function getCount(contactDetailsArray) {
 }
 contactDetailsArray.reduce(getCount, 1);
 console.log("Number of contacts in AddressBook : " + totalContacts);
+
+
+// UC7 
+// Check for duplicate values
+let personContact = new AddressBookJs("Porvi", "Shetty", "2nd cross", "Mandya", "Karnataka", "560078", "9876543210", "porvi@gmail.com");
+if (contactDetailsArray.some(e => e._firstName == "Porvi"))
+  console.log("Contact already exists!");
+else {
+  contactDetailsArray.push(personContact);
+  console.log("Contact added successfully");
+}
+console.log("Array: ", contactDetailsArray);
