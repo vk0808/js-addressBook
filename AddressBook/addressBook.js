@@ -201,3 +201,17 @@ console.log(contactDetailsArray.filter(contact => contact.state == "Karnataka")
 // UC 11
 // Sort entries alphabetically by first name
 Display(contactDetailsArray.sort((a, b) => a.firstName.localeCompare(b.firstName)));
+
+
+// UC 12
+// Sort contacts by city
+console.log("Contact after sorting by city");
+Display(contactDetailsArray.sort((a, b) => a.city.localeCompare(b.city)));
+
+// Sort contacts by state
+console.log("Contact after sorting by state");
+Display(contactDetailsArray.sort((a, b) => a.state.localeCompare(b.state)));
+
+// Sort contacts by zip
+console.log("Contact after sorting by zip");
+Display(contactDetailsArray.sort((a, b) => a.zip.localeCompare(b.zip)));
