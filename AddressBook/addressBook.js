@@ -101,6 +101,7 @@ class AddressBookJs {
   }
 }
 
+
 // UC 3
 let contactDetailsArray = new Array();
 
@@ -120,9 +121,18 @@ function Display() {
   contactDetailsArray.forEach((contact) => console.log(contact.toString() + "\n"));
 }
 
+
 // UC 4
 // get existing person
 let index = contactDetailsArray.findIndex(contact => contact.firstName == "Raja");
 // update
 contactDetailsArray[index].lastName = "Shekar";
+console.log("Address book after update");
+Display();
+
+
+// UC 5 
+// Remove an existing contact from an array at specified index
+contactDetailsArray.splice(index, 1);
+console.log("Address book after deletion");
 Display();
