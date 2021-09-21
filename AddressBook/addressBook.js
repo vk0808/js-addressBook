@@ -117,9 +117,10 @@ catch (e) {
   console.error(e);
 }
 
-function Display() {
-  contactDetailsArray.forEach((contact) => console.log(contact.toString() + "\n"));
+function Display(contactsArray) {
+  contactsArray.forEach((contact) => console.log(contact.toString() + "\n"));
 }
+// Display(contactDetailsArray);
 
 
 // UC 4
@@ -127,15 +128,15 @@ function Display() {
 let index = contactDetailsArray.findIndex(contact => contact.firstName == "Raja");
 // update
 contactDetailsArray[index].lastName = "Shekar";
-console.log("Address book after update");
-Display();
+// console.log("Address book after update");
+// Display(contactDetailsArray);
 
 
 // UC 5 
 // Remove an existing contact from an array at specified index
 contactDetailsArray.splice(index, 1);
-console.log("Address book after deletion");
-Display();
+// console.log("Address book after deletion");
+// Display(contactDetailsArray);
 
 
 // UC 6
@@ -147,7 +148,7 @@ function getCount(contactDetailsArray) {
   return totalContacts;
 }
 contactDetailsArray.reduce(getCount, 1);
-console.log("Number of contacts in AddressBook : " + totalContacts);
+// console.log("Number of contacts in AddressBook : " + totalContacts);
 
 
 // UC7 
@@ -157,6 +158,18 @@ if (contactDetailsArray.some(e => e._firstName == "Porvi"))
   console.log("Contact already exists!");
 else {
   contactDetailsArray.push(personContact);
-  console.log("Contact added successfully");
+  // console.log("Contact added successfully");
 }
-console.log("Array: ", contactDetailsArray);
+// console.log("Array: ");
+// Display(contactDetailsArray);
+
+// UC 8
+// Search contacts by city
+let findByCity = contactDetailsArray.filter((e) => e._city == 'Mandya');
+console.log("Contacts by City: ");
+Display(findByCity);
+
+// Search contacts by state
+let findByState = contactDetailsArray.filter((e) => e._state == 'Karnataka');
+console.log("Contacts by State: ");
+Display(findByState);
