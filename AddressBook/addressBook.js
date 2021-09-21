@@ -37,7 +37,7 @@ class AddressBookJs {
   // Address: minimum four characters
   get address() { return this._address; }
   set address(address) {
-    let addressRegex = RegExp('^[0-9 A-Z]{1}[A-Z a-z 0-9]{1,}$');
+    let addressRegex = RegExp("^[0-9 A-Z]{1}[A-Z a-z 0-9]{1,}$");
     if (addressRegex.test(address))
       this._address = address;
     else
@@ -99,4 +99,24 @@ class AddressBookJs {
     return "First Name: " + this.firstName + ", Last Name: " + this.lastName + "\nAddress: " + this.address + ", \nCity: " + this.city
       + ", \nState: " + this.state + " \nZip: " + this.zip + ", \nPhone Number: " + this.phoneNumber + ", \nEmail: " + this.email;
   }
+}
+
+// UC 3
+let contactDetailsArray = new Array();
+
+// Add contact details to array
+try {
+  contactDetailsArray.push(new AddressBookJs("Rahul ", "Gowda", "2nd cross Ramnagar Nagar", "Mysore", "Karnataka", "580082", "8123351458", "rahul@gmail.com"));
+  contactDetailsArray.push(new AddressBookJs("Ravi ", "Kumar", "3nd cross", "Bangalore", "Karnataka", "800078", "934747358", "ravi@gmail.com"));
+  contactDetailsArray.push(new AddressBookJs("Asha", "Kumari", "4nd cross Indira Nagar", "Bangalore", "Karnataka", "580003", "1234567896", "asha@gmail.com"));
+  contactDetailsArray.push(new AddressBookJs("Porvi", "Shetty", "2nd cross", "Mandya", "Karnataka", "560078", "0987654321", "porvi@gmail.com"));
+  contactDetailsArray.push(new AddressBookJs("Raja", "M", "2nd cross Rajaji Nagar", "Gadag", "Karnataka", "570006", "0987654321", "raja@gmail.com"));
+}
+catch (e) {
+  console.error(e);
+}
+Display();
+
+function Display() {
+  contactDetailsArray.forEach((contact) => console.log(contact.toString()));
 }
